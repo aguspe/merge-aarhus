@@ -1,8 +1,8 @@
 const TRACKS = [
-  { name: 'Track A', color: '#c8ff3d', room: 'Room 1 · Remisen', host: 'hosted by Claude Meetup' },
-  { name: 'Track B', color: '#e0433a', room: 'Room 2 · Åbne Scene', host: 'hosted by Aarhus Ruby' },
-  { name: 'Track C', color: '#4c8dff', room: 'Room 3 · Vogn 1', host: 'hosted by Aarhus.js' },
-  { name: 'Track D', color: '#f2b234', room: 'Room 4 · Kedlen', host: 'hosted by Python Aarhus' },
+  { name: 'Track A', color: '#c8ff3d', room: 'Room 1', host: 'hosted by Claude Meetup' },
+  { name: 'Track B', color: '#e0433a', room: 'Room 2', host: 'hosted by Aarhus Ruby' },
+  { name: 'Track C', color: '#4c8dff', room: 'Room 3', host: 'hosted by Aarhus.js' },
+  { name: 'Track D', color: '#f2b234', room: 'Room 4', host: 'hosted by Python Aarhus' },
 ];
 
 // [title, speaker, length, level] per track, in slot order
@@ -43,7 +43,7 @@ const DAY = [
   { time: '10:15', talk: 0 },
   { time: '11:00', talk: 1 },
   { time: '11:45', talk: 2 },
-  { time: '12:30', merge: ['Lunch merge', 'Everyone in the courtyard. Sit with a community you don’t know.'] },
+  { time: '12:30', merge: ['Lunch merge', 'Everyone together. Sit with a community you don’t know.'] },
   { time: '13:30', talk: 3 },
   { time: '14:30', talk: 4 },
   { time: '17:00', merge: ['Closing · all rooms', 'Wrap-up, thanks, beers.'] },
