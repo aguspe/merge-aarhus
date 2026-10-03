@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>git merge aarhus</title>
+  <meta name="description" content="One day, one roof, every community. Aarhus tech meetups share a venue, a schedule and a lunch. Sat 14 Mar 2027, Godsbanen.">
+  <meta name="theme-color" content="#0c0d0f">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <a href="/" class="logo">merge<span>_</span>aarhus</a>
+      <div class="nav-links">
+        <a href="schedule.html">schedule</a>
+        <a href="#register">register</a>
+      </div>
+    </nav>
+
+    <header class="section hero">
+      <div class="kicker">// one day. one roof. every community.</div>
+      <h1>git merge<br>aarhus</h1>
+      <dl class="facts">
+        <div><dt>date</dt><dd>Sat 14 Mar 2027</dd></div>
+        <div><dt>venue</dt><dd>Godsbanen, Aarhus C</dd></div>
+        <div><dt>format</dt><dd>4 tracks · 24 talks</dd></div>
+        <div><dt>price</dt><dd>Free, registration req.</dd></div>
+      </dl>
+      <a href="#register" class="btn">Register<span>→</span></a>
+    </header>
+
+    <section class="section">
+      <div class="label">## what it is</div>
+      <p class="lede">Aarhus has a dozen tech meetups that never meet each other. For one day they share a venue, a schedule and a lunch. Pick a track, switch rooms, meet the people you only know from Slack.</p>
+    </section>
+
+    <section class="section" id="communities">
+      <div class="label-row">
+        <div class="label">## communities</div>
+        <a href="#communities" class="link-accent">all 12 →</a>
+      </div>
+      <div class="grid-2">
+        <a href="community.html" class="card">
+          <div class="swatch" style="background:#e0433a"></div>
+          <div class="card-name">Aarhus Ruby</div>
+          <div class="card-meta">340 members</div>
+        </a>
+        <div class="card">
+          <div class="swatch" style="background:#c8ff3d"></div>
+          <div class="card-name">Claude Meetup Group</div>
+          <div class="card-meta">520 members</div>
+        </div>
+        <div class="card">
+          <div class="swatch" style="background:#4c8dff"></div>
+          <div class="card-name">Aarhus.js</div>
+          <div class="card-meta">890 members</div>
+        </div>
+        <div class="card">
+          <div class="swatch" style="background:#f2b234"></div>
+          <div class="card-name">Python Aarhus</div>
+          <div class="card-meta">610 members</div>
+        </div>
+        <div class="card">
+          <div class="swatch" style="background:#b96cff"></div>
+          <div class="card-name">UX Aarhus</div>
+          <div class="card-meta">270 members</div>
+        </div>
+        <div class="card">
+          <div class="swatch" style="background:#2ad3a5"></div>
+          <div class="card-name">DevOps Denmark</div>
+          <div class="card-meta">430 members</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="label">## the day</div>
+      <ul class="day">
+        <li><time>09:00</time><span>Doors, coffee</span></li>
+        <li><time>09:45</time><span>Opening · all rooms</span></li>
+        <li><time>10:15</time><span>Talks · 4 parallel tracks</span></li>
+        <li><time>12:30</time><span class="merge">Lunch merge · everyone</span></li>
+        <li><time>13:30</time><span>Talks · 4 parallel tracks</span></li>
+        <li><time>17:00</time><span>Closing, beers</span></li>
+      </ul>
+      <a href="schedule.html" class="link-accent after-list">Full schedule →</a>
+    </section>
+
+    <section class="section" id="register">
+      <div class="label">## register</div>
+      <p class="muted-p">Free. 400 spots. We only ask for a name and an email so we know how many sandwiches to order.</p>
+      <form class="form" id="register-form">
+        <input class="input" name="name" placeholder="name" autocomplete="name" required>
+        <input class="input" name="email" type="email" placeholder="email" autocomplete="email" required>
+        <button class="btn center" type="submit">Register</button>
+        <div class="form-note" id="form-note" role="status"></div>
+      </form>
+      <div class="footer">
+        merge-aarhus.dk · <a href="mailto:hello@merge-aarhus.dk">hello@merge-aarhus.dk</a><br>
+        Organised by the communities, for the communities.
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // No backend yet: registration hands off to the user's mail client.
+    document.getElementById('register-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const f = e.target;
+      const body = `Name: ${f.name.value}\nEmail: ${f.email.value}`;
+      window.location.href = `mailto:hello@merge-aarhus.dk?subject=${encodeURIComponent('Register: git merge aarhus')}&body=${encodeURIComponent(body)}`;
+      document.getElementById('form-note').textContent = 'Opening your mail app — send it and you are in.';
+    });
+  </script>
+</body>
+</html>

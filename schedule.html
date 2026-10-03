@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Schedule · git merge aarhus</title>
+  <meta name="description" content="Four rooms, switch any time. Full schedule for git merge aarhus, Sat 14 Mar 2027.">
+  <meta name="theme-color" content="#0c0d0f">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <a href="/" class="logo">merge<span>_</span>aarhus</a>
+      <div class="nav-links">
+        <a href="schedule.html" aria-current="page">schedule</a>
+        <a href="/#register">register</a>
+      </div>
+    </nav>
+
+    <div class="page-head">
+      <h1>Schedule</h1>
+      <div class="sub">Sat 14 Mar · 4 rooms · switch any time</div>
+      <div class="tabs" role="tablist" id="tabs"></div>
+    </div>
+
+    <main class="slots" role="tabpanel" id="panel">
+      <div class="room"><span id="room"></span><span id="host"></span></div>
+      <div id="slots"></div>
+    </main>
+  </div>
+
+  <script src="schedule.js"></script>
+</body>
+</html>
