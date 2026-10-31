@@ -87,6 +87,29 @@ a:hover { color: var(--accent); }
 
 .lede { margin: 0; font: 500 17px/1.45 var(--display); text-wrap: pretty; }
 
+/* communities */
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.community {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--surface);
+  text-align: center;
+  color: var(--fg-soft);
+}
+.community img { width: 100%; height: 96px; object-fit: contain; }
+
 /* register */
 .muted-p { margin: 0 0 16px; color: var(--muted); line-height: 1.6; }
 .form { display: flex; flex-direction: column; gap: 8px; }
