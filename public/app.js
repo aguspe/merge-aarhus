@@ -6,9 +6,9 @@ form.addEventListener('submit', async (e) => {
   const data = {
     name: form.name.value.trim(),
     email: form.email.value.trim(),
-    community: form.community.value.trim() || 'none',
+    communities: form.communities.value.trim() || 'none',
     _gotcha: form._gotcha.value,
-    _subject: 'Interested: git merge aarhus',
+    _subject: 'Interested: merge aarhus',
   };
 
   const button = form.querySelector('button');
