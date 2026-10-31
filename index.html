@@ -27,7 +27,7 @@
     <section class="section" id="interest">
       <div class="label">## interested?</div>
       <p class="muted-p">We're gauging interest before we plan the day. Leave your name and email so we know how many people might come. No commitment, no spam, we'll only email you about the event.</p>
-      <form class="form" id="interest-form">
+      <form class="form" id="interest-form" action="https://formspree.io/f/mljjpjzb" method="POST">
         <label class="field">
           <span>name</span>
           <input class="input" name="name" autocomplete="name" required>
@@ -59,10 +59,6 @@
   </div>
 
   <script>
-    // Set to a form backend URL (e.g. https://formspree.io/f/xxxx) to collect
-    // submissions directly. Left empty, the form falls back to the mail client.
-    const FORM_ENDPOINT = '';
-
     const form = document.getElementById('interest-form');
     const note = document.getElementById('form-note');
 
@@ -72,20 +68,14 @@
         name: form.name.value.trim(),
         email: form.email.value.trim(),
         community: form.community.value.trim() || 'none',
+        _subject: 'Interested: git merge aarhus',
       };
-
-      if (!FORM_ENDPOINT) {
-        const body = `Name: ${data.name}\nEmail: ${data.email}\nCommunity: ${data.community}`;
-        window.location.href = `mailto:hello@merge-aarhus.dk?subject=${encodeURIComponent('Interested: git merge aarhus')}&body=${encodeURIComponent(body)}`;
-        note.textContent = 'Opening your mail app. Hit send and you are counted.';
-        return;
-      }
 
       const button = form.querySelector('button');
       button.disabled = true;
       note.textContent = 'Sending…';
       try {
-        const res = await fetch(FORM_ENDPOINT, {
+        const res = await fetch(form.action, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
           body: JSON.stringify(data),
