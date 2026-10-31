@@ -7,10 +7,10 @@
   <meta name="description" content="A free, community-driven tech event in Aarhus, for everyone. Saturday 10 April 2027. Tell us you're interested so we know how many people to plan for.">
   <meta name="theme-color" content="#0c0d0f">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
 </head>
 <body>
   <div class="wrap">
@@ -31,26 +31,25 @@
       <form class="form" id="interest-form" action="https://formspree.io/f/mljjpjzb" method="POST">
         <label class="field">
           <span>name</span>
-          <input class="input" name="name" autocomplete="name" required>
+          <input class="input" name="name" autocomplete="name" maxlength="100" required>
         </label>
         <label class="field">
           <span>email</span>
-          <input class="input" name="email" type="email" autocomplete="email" required>
+          <input class="input" name="email" type="email" autocomplete="email" maxlength="200" required>
         </label>
         <label class="field">
           <span>community <em>(optional)</em></span>
-          <input class="input" name="community" list="communities" placeholder="tell us which community you come from">
-          <datalist id="communities">
-            <option value="Aarhus Ruby">
-            <option value="Claude Meetup Group">
-            <option value="Aarhus.js">
-            <option value="Python Aarhus">
-            <option value="UX Aarhus">
-            <option value="Rust Aarhus">
-          </datalist>
+          <input class="input" name="community" autocomplete="off" maxlength="100" placeholder="tell us which community you come from">
         </label>
+        <!-- Honeypot: hidden from people, filled in by bots. Formspree drops submissions where it is set. -->
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="btn center" type="submit">I'm interested</button>
         <div class="form-note" id="form-note" role="status"></div>
+        <p class="privacy">
+          The git merge aarhus organisers collect your name, email and community only to estimate attendance and to email you about this event.
+          Submissions are stored with our form provider, Formspree (USA), and deleted after 60 days.
+          To see or delete your data sooner, email <a href="mailto:hello@merge-aarhus.dk">hello@merge-aarhus.dk</a>.
+        </p>
       </form>
       <div class="footer">
         merge-aarhus.dk · <a href="mailto:hello@merge-aarhus.dk">hello@merge-aarhus.dk</a><br>
@@ -58,38 +57,5 @@
       </div>
     </section>
   </div>
-
-  <script>
-    const form = document.getElementById('interest-form');
-    const note = document.getElementById('form-note');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const data = {
-        name: form.name.value.trim(),
-        email: form.email.value.trim(),
-        community: form.community.value.trim() || 'none',
-        _subject: 'Interested: git merge aarhus',
-      };
-
-      const button = form.querySelector('button');
-      button.disabled = true;
-      note.textContent = 'Sending…';
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify(data),
-        });
-        if (!res.ok) throw new Error(res.status);
-        form.reset();
-        note.textContent = 'Thanks! You are counted. We will be in touch.';
-      } catch {
-        note.textContent = 'Something went wrong. Email hello@merge-aarhus.dk instead.';
-      } finally {
-        button.disabled = false;
-      }
-    });
-  </script>
 </body>
 </html>

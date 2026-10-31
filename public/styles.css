@@ -1,3 +1,18 @@
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(fonts/jetbrains-mono-latin.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url(fonts/space-grotesk-latin.woff2) format('woff2');
+}
+
 :root {
   --bg: #0c0d0f;
   --surface: #12141a;
@@ -91,6 +106,9 @@ a:hover { color: var(--accent); }
 .btn:disabled { opacity: .6; cursor: wait; }
 .hero-lede { margin-top: 24px; color: var(--fg-soft); }
 .hero-date { margin-top: 16px; color: var(--accent); }
+.hp { position: absolute; left: -10000px; width: 1px; height: 1px; opacity: 0; }
+.privacy { margin: 8px 0 0; font-size: 11px; line-height: 1.6; color: var(--faint); }
+.privacy a { color: var(--muted); }
 .form-note { min-height: 1.5em; color: var(--accent); }
 .footer { margin-top: 32px; font-size: 11px; line-height: 1.6; color: var(--faint); }
 .footer a { color: var(--faint); }
