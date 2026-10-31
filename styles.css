@@ -90,6 +90,7 @@ a:hover { color: var(--accent); }
 .form .btn { margin-top: 8px; }
 .btn:disabled { opacity: .6; cursor: wait; }
 .hero-lede { margin-top: 24px; color: var(--fg-soft); }
+.hero-date { margin-top: 16px; color: var(--accent); }
 .form-note { min-height: 1.5em; color: var(--accent); }
 .footer { margin-top: 32px; font-size: 11px; line-height: 1.6; color: var(--faint); }
 .footer a { color: var(--faint); }
