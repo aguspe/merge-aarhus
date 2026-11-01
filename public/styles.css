@@ -96,7 +96,7 @@ a:hover { color: var(--accent); }
   padding: 0;
   list-style: none;
 }
-.community {
+.community a {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -107,7 +107,10 @@ a:hover { color: var(--accent); }
   background: var(--surface);
   text-align: center;
   color: var(--fg-soft);
+  text-decoration: none;
+  height: 100%;
 }
+.community a:hover { border-color: var(--accent); color: var(--accent); }
 .community img { width: 100%; height: 96px; object-fit: contain; }
 
 /* register */
