@@ -88,13 +88,32 @@ a:hover { color: var(--accent); }
 .lede { margin: 0; font: 500 17px/1.45 var(--display); text-wrap: pretty; }
 
 /* communities */
-.community-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+.community-track {
+  display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   margin: 0;
   padding: 0;
   list-style: none;
+}
+.community { flex: 0 0 160px; }
+
+/* scrolling carousel, switched on by app.js unless reduced motion is preferred */
+.community-carousel.is-scrolling {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+.is-scrolling .community-track {
+  flex-wrap: nowrap;
+  width: max-content;
+  animation: community-scroll 45s linear infinite;
+}
+.is-scrolling:hover .community-track,
+.is-scrolling:focus-within .community-track { animation-play-state: paused; }
+/* the list is doubled, so shifting by half (plus half a gap) loops seamlessly */
+@keyframes community-scroll {
+  to { transform: translateX(calc(-50% - 6px)); }
 }
 .community a {
   display: flex;
