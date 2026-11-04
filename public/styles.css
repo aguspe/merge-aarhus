@@ -88,32 +88,13 @@ a:hover { color: var(--accent); }
 .lede { margin: 0; font: 500 17px/1.45 var(--display); text-wrap: pretty; }
 
 /* communities */
-.community-track {
-  display: flex;
-  flex-wrap: wrap;
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 12px;
   margin: 0;
   padding: 0;
   list-style: none;
-}
-.community { flex: 0 0 160px; }
-
-/* scrolling carousel, switched on by app.js unless reduced motion is preferred */
-.community-carousel.is-scrolling {
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-}
-.is-scrolling .community-track {
-  flex-wrap: nowrap;
-  width: max-content;
-  animation: community-scroll 45s linear infinite;
-}
-.is-scrolling:hover .community-track,
-.is-scrolling:focus-within .community-track { animation-play-state: paused; }
-/* the list is doubled, so shifting by half (plus half a gap) loops seamlessly */
-@keyframes community-scroll {
-  to { transform: translateX(calc(-50% - 6px)); }
 }
 .community a {
   display: flex;
@@ -152,7 +133,27 @@ a:hover { color: var(--accent); }
 .btn:disabled { opacity: .6; cursor: wait; }
 .hero-lede { margin-top: 24px; color: var(--fg-soft); }
 .hero-date { margin-top: 16px; color: var(--accent); }
-.hero-communities { margin: 12px 0 0; color: var(--muted); line-height: 1.6; text-wrap: pretty; }
+.hero-communities { margin-top: 12px; color: var(--muted); line-height: 1.6; }
+.hero-communities p { margin: 0 0 4px; }
+.name-track { display: flex; flex-wrap: wrap; margin: 0; padding: 0; list-style: none; }
+.name-track li { white-space: nowrap; color: var(--fg-soft); }
+.name-track li::after { content: "·"; padding: 0 12px; color: var(--faint); }
+.name-marquee:not(.is-scrolling) li:last-child::after { content: none; }
+
+/* name ticker, switched on by app.js unless reduced motion is preferred */
+.name-marquee.is-scrolling {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+.is-scrolling .name-track {
+  flex-wrap: nowrap;
+  width: max-content;
+  animation: name-scroll 30s linear infinite;
+}
+.is-scrolling:hover .name-track { animation-play-state: paused; }
+/* the list is doubled, so shifting by half loops seamlessly */
+@keyframes name-scroll { to { transform: translateX(-50%); } }
 .hp { position: absolute; left: -10000px; width: 1px; height: 1px; opacity: 0; }
 .privacy { margin: 8px 0 0; font-size: 11px; line-height: 1.6; color: var(--faint); }
 .privacy a { color: var(--muted); }
